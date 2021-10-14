@@ -13,7 +13,7 @@ public class FirstMYQCTest {
 
         ChromeDriver chromeDrive = new ChromeDriver();
         ChromeOptions co = new ChromeOptions();
-        //System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
 
         chromeDrive.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         System.out.println("TEST MESSAGE");
