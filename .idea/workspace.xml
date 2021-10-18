@@ -59,7 +59,7 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/REP" />
     </ignored-roots>
-    <MESSAGE value="initial project files: IntelliJ, chromedriver.exe, maven" />
+    <MESSAGE value="" />
     <option name="LAST_COMMIT_MESSAGE" value="initial project files: IntelliJ, chromedriver.exe, maven" />
   </component>
 </project>
