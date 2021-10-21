@@ -6,4 +6,6 @@ Upon initial cloning of this repository, if you plan to utilize the built-in Int
 	<user name> = the user name to display in Bitbucket
 	<user email> = your MMH email address
 
-- to verify these were set correctly, execute: "git show-user"
+- to verify the user data, execute: "git show-user", it should display:
+<your Display User Name>
+<your MMH Email Address>
