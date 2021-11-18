@@ -1,11 +1,9 @@
 package com.mmh.qa.auto;
 
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -14,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class TestUtils {
     public static final String ENV_BROWSER_DRIVER = "BROWSER_DRIVER";
@@ -25,10 +24,11 @@ public class TestUtils {
     public static final String LOG_PATH = "\\";
     public static final int WAITFOR_DEFAULT_TIMEOUT = 30;
 
+    protected RemoteWebDriver webDriver;
+
     private String webDriverName;
-    private RemoteWebDriver webDriver;
+    private Capabilities webDriverOptions;
     private WebDriverWait webWaiterDefault;  // predefined with 30s timeout
-    private WebDriverWait webWaiter;
 
     public TestUtils() {
         setBrowserDriver(DRIVER_DEFAULT);
@@ -36,6 +36,26 @@ public class TestUtils {
 
     public TestUtils(String driver) {
         setBrowserDriver(driver);
+    }
+
+    public WebElement findElementBy(By by) {
+        WebElement we = null;
+        try {
+            we = webDriver.findElement(by);
+        } catch (Exception e) {
+
+        }
+        return we;
+    }
+
+    public List findElementsBy(By by) {
+        List<WebElement> weList = null;
+        try {
+            weList = webDriver.findElements(by);
+        } catch (Exception e) {
+
+        }
+        return weList;
     }
 
     /**
@@ -50,7 +70,11 @@ public class TestUtils {
                 try {
                     switch (webDriverName) {
                         case DRIVER_CHROME:
-                            webDriver = new ChromeDriver();
+                            if (webDriverOptions == null) {
+                                webDriver = new ChromeDriver();
+                            } else {
+                                webDriver = new ChromeDriver((ChromeOptions)webDriverOptions);
+                            }
                             break;
                         case DRIVER_EDGE:
                             webDriver = new EdgeDriver();
@@ -85,7 +109,6 @@ public class TestUtils {
     public void setBrowserDriver(RemoteWebDriver theDriver) {
         webDriver = theDriver;
     }
-
     /**
      * Verifies and sets the property for the web driver used with this instance of TestUtils.
      * @param driverName
@@ -128,16 +151,21 @@ public class TestUtils {
             webDriver = null;
             webDriverName = driverName;
         }
+    }
 
+    public void setBrowserDriverOptions(Capabilities theOptions) {
+        webDriverOptions = theOptions;
     }
 
     public boolean waitFor(String xPath) {
-
         return waitFor(xPath, WAITFOR_DEFAULT_TIMEOUT);
     }
 
     public boolean waitFor(String xPath, long timeOut) {
+        return waitFor(xPath, WAITFOR_DEFAULT_TIMEOUT, false);
+    }
 
+    public boolean waitFor(String xPath, long timeOut, boolean silent) {
         WebDriverWait waiter;
         if (timeOut == WAITFOR_DEFAULT_TIMEOUT) {
             if (webWaiterDefault == null) {
@@ -150,10 +178,10 @@ public class TestUtils {
         long t1 = System.currentTimeMillis();
         try {
             waiter.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xPath)));
-            System.out.println("Found element "+xPath+" after " + (System.currentTimeMillis()-t1) + "ms");
+            if (!silent) System.out.println("Found element "+xPath+" after " + (System.currentTimeMillis()-t1) + "ms");
             return true;
         } catch (TimeoutException toe) {
-            System.err.println("Timed out waiting for element "+xPath+" after " + (System.currentTimeMillis()-t1) + "ms");
+            if (!silent) System.err.println("Timed out waiting for element "+xPath+" after " + (System.currentTimeMillis()-t1) + "ms");
             return false;
         }
     }
@@ -167,7 +195,7 @@ public class TestUtils {
         long tBegin=System.currentTimeMillis();
         WebDriverWait webWaiter;
         String spinnerXPath = "//div[contains(@class, 'block-mask')]";
-        if (waitFor(spinnerXPath, 3)) {
+        if (waitFor(spinnerXPath, 1, true)) {
             System.out.println("found spinner");
             if (timeout == WAITFOR_DEFAULT_TIMEOUT) {
                 webWaiter = webWaiterDefault;
@@ -176,9 +204,6 @@ public class TestUtils {
             }
             webWaiter.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(spinnerXPath)));
             System.out.println("Spinner wait time:"+ (System.currentTimeMillis()-tBegin));
-        } else {
-            //TODO screenshot
-            System.err.println(String.format("Timed out(%ssec) waiting for spinner(%s)", Long.valueOf(System.currentTimeMillis()-tBegin), spinnerXPath));
         }
         System.out.println("--------------- exited waitForApp(), elapsed: " + (System.currentTimeMillis()-tBegin));
     }
