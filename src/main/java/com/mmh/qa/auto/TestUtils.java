@@ -116,18 +116,22 @@ public class TestUtils {
     public void setBrowserDriver(String driverName) {
         String foundBDPath = null;
         // look for windows env var
-        File f = new File(System.getenv(ENV_BROWSER_DRIVER));
-        if (f.exists()) {
-            foundBDPath = System.getenv(ENV_BROWSER_DRIVER);
-            System.out.println("found driver from Win env:" + ENV_BROWSER_DRIVER);
-            System.out.println("found driver file in dir:" + f.getPath());
+        try {
+            File f = new File(System.getenv(ENV_BROWSER_DRIVER));
+            if (f != null && f.exists()) {
+                foundBDPath = System.getenv(ENV_BROWSER_DRIVER);
+                System.out.println("found driver from Win env:" + ENV_BROWSER_DRIVER);
+                System.out.println("found driver file in dir:" + f.getPath());
+            }
+        } catch (Exception e) {
+            // dont need to do anything here
         }
 
         if (foundBDPath == null) {
             // look in the current dir
             String browseDriverPath = DRIVER_PATH_CURRENT + "\\" + driverName;
-            f = new File(System.getProperty("user.dir") + browseDriverPath);
-            if (f.exists()) {
+            File f = new File(System.getProperty("user.dir") + browseDriverPath);
+            if (f != null && f.exists()) {
                 foundBDPath = f.getPath();
                 System.out.println("found driver file in user.dir:" + foundBDPath);
             }
