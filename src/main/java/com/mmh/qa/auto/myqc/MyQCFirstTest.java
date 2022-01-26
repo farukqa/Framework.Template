@@ -4,8 +4,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.Test;
 
 @Test()
-public class MYQCFirstTest extends MYQCUtils {
-    public MYQCFirstTest() {
+public class MyQCFirstTest extends MyQC {
+    public MyQCFirstTest() {
         super();
         ChromeOptions options = new ChromeOptions();
         //options.addArguments("window-position=-1000,0");
@@ -14,7 +14,7 @@ public class MYQCFirstTest extends MYQCUtils {
 
     }
     public static void main (String[] args) {
-        MYQCFirstTest test = new MYQCFirstTest();
+        MyQCFirstTest test = new MyQCFirstTest();
         test.testInherited();
     }
 
@@ -32,14 +32,14 @@ public class MYQCFirstTest extends MYQCUtils {
     }
 
     public void test_standalone() {
-        MYQCUtils myqc = new MYQCUtils();
+        MyQC myqc = new MyQC();
         myqc.loginUser("autotest400", "Auto Test 400", "Kronites1", "samqc95rtm.mmhayes.com", "myqc", true);
-        myqc.navMainMenu(MYQCUtils.MENU_ABOUT);
-        myqc.navMainMenu(MYQCUtils.MENU_ORDERING);
-        myqc.navMainMenu(MYQCUtils.MENU_HISTORY);
-        myqc.navMainMenu(MYQCUtils.MENU_ACCOUNT);
-        myqc.navMainMenu(MYQCUtils.MENU_FREEZE);
-        myqc.navMainMenu(MYQCUtils.MENU_FUNDING);
+        myqc.navMainMenu(MyQC.MENU_ABOUT);
+        myqc.navMainMenu(MyQC.MENU_ORDERING);
+        myqc.navMainMenu(MyQC.MENU_HISTORY);
+        myqc.navMainMenu(MyQC.MENU_ACCOUNT);
+        myqc.navMainMenu(MyQC.MENU_FREEZE);
+        myqc.navMainMenu(MyQC.MENU_FUNDING);
 
     }
 }

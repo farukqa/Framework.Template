@@ -1,11 +1,10 @@
 package com.mmh.qa.auto.myqc;
 
-import com.mmh.qa.auto.TestUtils;
+import com.mmh.qa.auto.TestRoot;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
-public class MYQCUtils extends TestUtils {
+public class MyQC extends TestRoot {
     public static final long NAVIGATE_TIMEOUT = 30000;
     public static final int MENU_ORDERING = 0;
     public static final int MENU_REWARDS = 1;
@@ -38,12 +37,11 @@ public class MYQCUtils extends TestUtils {
     private String userDisplayedName;
     private String userAccountNum;
 
-    MYQCUtils() {
+    public MyQC() {
         super();
-//        webDriver = getBrowserDriver();
     }
 
-    MYQCUtils(String driver) {
+    public MyQC(String driver) {
         super(driver);
     }
 

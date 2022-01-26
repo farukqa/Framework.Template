@@ -14,7 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-public class TestUtils {
+public class TestRoot {
     public static final String ENV_BROWSER_DRIVER = "BROWSER_DRIVER";
     public static final String DRIVER_PATH_CURRENT = "\\bin\\webdrivers";
     public static final String DRIVER_CHROME = "chromedriver.exe";
@@ -30,11 +30,11 @@ public class TestUtils {
     private Capabilities webDriverOptions;
     private WebDriverWait webWaiterDefault;  // predefined with 30s timeout
 
-    public TestUtils() {
+    public TestRoot() {
         setBrowserDriver(DRIVER_DEFAULT);
     }
 
-    public TestUtils(String driver) {
+    public TestRoot(String driver) {
         setBrowserDriver(driver);
     }
 
