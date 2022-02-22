@@ -1,4 +1,4 @@
-package com.mmh.qa.auto;
+    package com.mmh.qa.auto;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
@@ -38,29 +38,52 @@ public class TestRoot {
         setBrowserDriver(driver);
     }
 
+    public TestRoot(String driver, Capabilities theOptions) {
+        setBrowserDriver(driver);
+        setBrowserDriverOptions(theOptions);
+    }
+
+    /**
+     * Wrapper around WebDriver.findElement() that returns a value instead of throwing exceptions
+     * @param by
+     * @return WebElement found or null
+     */
     public WebElement findElementBy(By by) {
         WebElement we = null;
         try {
             we = webDriver.findElement(by);
         } catch (Exception e) {
-
+            System.err.println(String.format("Cannot find element:(%s) - Encountered error:%s ", by.toString(), e.getMessage() ));
         }
         return we;
     }
 
+    /**
+     * Wrapper around WebDriver.findElements() that returns a value instead of throwing exceptions
+     * @param by
+     * @return WebElement found or null
+     */
     public List findElementsBy(By by) {
         List<WebElement> weList = null;
         try {
             weList = webDriver.findElements(by);
         } catch (Exception e) {
-
+            System.err.println(String.format("Cannot find element:(%s) - Encountered error:%s ", by.toString(), e.getMessage() ));
         }
         return weList;
     }
 
     /**
+     * Wrapper around getBrowserDriver(). This is just a shorter method name.
+     * @return
+     */
+    public RemoteWebDriver getDriver() {
+        return getBrowserDriver();
+    }
+
+    /**
      *
-     * @return Browser driver of type RemoteWebDriver
+     * @return Browser driver for this object
      */
     public RemoteWebDriver getBrowserDriver() {
         if (webDriver == null) {
@@ -93,6 +116,10 @@ public class TestRoot {
         return webDriver;
     }
 
+    public Capabilities getBrowserDriverOptions() {
+        return webDriverOptions;
+    }
+
     public void screenshot() {
         //TODO: verify location of images files is ok
         TakesScreenshot shotTaker = (TakesScreenshot) webDriver;
@@ -106,9 +133,22 @@ public class TestRoot {
         }
     }
 
+    /**
+     * Wrapper around Thread.sleep() that doesn't throw an exception.
+     * @param timeMillis
+     */
+    public void sleep(long timeMillis) {
+        try {
+            Thread.sleep(timeMillis);
+        } catch (InterruptedException ie) {
+
+        }
+    }
+
     public void setBrowserDriver(RemoteWebDriver theDriver) {
         webDriver = theDriver;
     }
+
     /**
      * Verifies and sets the property for the web driver used with this instance of TestUtils.
      * @param driverName
@@ -165,19 +205,19 @@ public class TestRoot {
         return waitFor(xPath, WAITFOR_DEFAULT_TIMEOUT);
     }
 
-    public boolean waitFor(String xPath, long timeOut) {
-        return waitFor(xPath, WAITFOR_DEFAULT_TIMEOUT, false);
+    public boolean waitFor(String xPath, long timeOutSec) {
+        return waitFor(xPath, timeOutSec, false);
     }
 
-    public boolean waitFor(String xPath, long timeOut, boolean silent) {
+    public boolean waitFor(String xPath, long timeOutSec, boolean silent) {
         WebDriverWait waiter;
-        if (timeOut == WAITFOR_DEFAULT_TIMEOUT) {
+        if (timeOutSec == WAITFOR_DEFAULT_TIMEOUT) {
             if (webWaiterDefault == null) {
                 webWaiterDefault = new WebDriverWait(webDriver, WAITFOR_DEFAULT_TIMEOUT);
             }
             waiter = webWaiterDefault;
         } else {
-            waiter = new WebDriverWait(webDriver, timeOut);
+            waiter = new WebDriverWait(webDriver, timeOutSec);
         }
         long t1 = System.currentTimeMillis();
         try {
