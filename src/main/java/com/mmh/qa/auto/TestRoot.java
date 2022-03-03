@@ -28,7 +28,7 @@ public class TestRoot {
 
     private String webDriverName;
     private Capabilities webDriverOptions;
-    private WebDriverWait webWaiterDefault;  // predefined with 30s timeout
+    protected WebDriverWait webWaiterDefault;  // predefined with 30s timeout
 
     public TestRoot() {
         setBrowserDriver(DRIVER_DEFAULT);
@@ -122,7 +122,7 @@ public class TestRoot {
 
     public void screenshot() {
         //TODO: verify location of images files is ok
-        TakesScreenshot shotTaker = (TakesScreenshot) webDriver;
+        TakesScreenshot shotTaker = (TakesScreenshot) getDriver();
         File shot = shotTaker.getScreenshotAs(OutputType.FILE);
         String nameSerial = String.valueOf(System.currentTimeMillis());
         try {
@@ -230,16 +230,13 @@ public class TestRoot {
         }
     }
 
-    public void waitForApp() {
-        waitForApp(WAITFOR_DEFAULT_TIMEOUT);
-    }
-
-    public void waitForApp(long timeout) {
+    //TODO DELETE
+    public void waitForAppX_TODELETE(long timeout) {
         System.out.println("================================================\n-------------- entered waitForApp()");
         long tBegin=System.currentTimeMillis();
         WebDriverWait webWaiter;
         String spinnerXPath = "//div[contains(@class, 'block-mask')]";
-        if (waitFor(spinnerXPath, 1, true)) {
+        if (waitFor(spinnerXPath, 5, true)) {
             System.out.println("found spinner");
             if (timeout == WAITFOR_DEFAULT_TIMEOUT) {
                 webWaiter = webWaiterDefault;
