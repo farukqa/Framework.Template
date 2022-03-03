@@ -1,3 +1,6 @@
 [submodule "myqc"]
 	path = src/main/java/com/mmh/qa/auto/myqc
 	url = git@bitbucket.org:mmhayesqa/myqc.git
+[submodule "qcweb"]
+	path = src/main/java/com/mmh/qa/auto/qcweb
+	url = git@bitbucket.org:mmhayesqa/qcweb.git
