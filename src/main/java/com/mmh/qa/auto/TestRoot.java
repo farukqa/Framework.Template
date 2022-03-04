@@ -1,4 +1,4 @@
-    package com.mmh.qa.auto;
+package com.mmh.qa.auto;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.List;
 
 public class TestRoot {
@@ -25,10 +26,10 @@ public class TestRoot {
     public static final int WAITFOR_DEFAULT_TIMEOUT = 30;
 
     protected RemoteWebDriver webDriver;
+    protected WebDriverWait webWaiterDefault;  // predefined with 30s timeout
 
     private String webDriverName;
     private Capabilities webDriverOptions;
-    protected WebDriverWait webWaiterDefault;  // predefined with 30s timeout
 
     public TestRoot() {
         setBrowserDriver(DRIVER_DEFAULT);
@@ -213,11 +214,11 @@ public class TestRoot {
         WebDriverWait waiter;
         if (timeOutSec == WAITFOR_DEFAULT_TIMEOUT) {
             if (webWaiterDefault == null) {
-                webWaiterDefault = new WebDriverWait(webDriver, WAITFOR_DEFAULT_TIMEOUT);
+                webWaiterDefault = new WebDriverWait(webDriver, Duration.ofMillis(WAITFOR_DEFAULT_TIMEOUT));
             }
             waiter = webWaiterDefault;
         } else {
-            waiter = new WebDriverWait(webDriver, timeOutSec);
+            waiter = new WebDriverWait(webDriver, Duration.ofMillis(timeOutSec));
         }
         long t1 = System.currentTimeMillis();
         try {
@@ -241,7 +242,7 @@ public class TestRoot {
             if (timeout == WAITFOR_DEFAULT_TIMEOUT) {
                 webWaiter = webWaiterDefault;
             } else {
-                webWaiter = new WebDriverWait(webDriver, timeout);
+                webWaiter = new WebDriverWait(webDriver, Duration.ofMillis(timeout));
             }
             webWaiter.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(spinnerXPath)));
             System.out.println("Spinner wait time:"+ (System.currentTimeMillis()-tBegin));
