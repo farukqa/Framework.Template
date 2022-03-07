@@ -2,4 +2,4 @@
 show-user = !git config --global --get user.name && git config --global --get user.email
 set-user = config --global --add user.name
 set-email = config --global --add user.email
-init-ignores = !git update-index --assume-unchanged ./pom.xml && git update-index --assume-unchanged ./.idea/*.xml
+# init-ignores = !git update-index --assume-unchanged ./pom.xml && git update-index --assume-unchanged ./.idea/*.xml
