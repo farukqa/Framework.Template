@@ -1,0 +1,111 @@
+# input data for QCWeb PageLoad test
+menu,item,pageHeaderText,pageType,isRestricted,isSuperItem,introduced,groundOnly,addNew,xpathTags,tag1,tag2
+General,Account Manager,Account Manager,,y,,,,,div-span,summaryDiv,Accounts
+General,Person Account Manager,Person Account ManagerX,,y,,9.2.0,,,div-span,summaryDiv,Person Account
+General,Cashless Sales Dashboard,Cashless Sales Totals for all revenue centersX,dashboard,y,,,,,div-div,dashBoardContainer,Total Cashless Sales:
+General,Change Password,Change Password Configuration,,,,,,,div-div,summaryEditorContainer,Update Password
+General,Global Audit Logging Viewer,Global Audit Logging Viewer,,y,,9.3.0,,,div-span,summaryDiv,Results
+General,Import Status,Import Status,,y,,,,,div-div,summaryEditorContainer,General Settings
+General,Payroll Deduction Dashboard,Payroll Deduction Totals for all deduction codes,dashboard,y,,,,,div-div,dashBoardContainer,Total Deductions:
+General,POS Dashboard,POS Totals for all revenue centers,dashboard,y,,,,,div-div,dashBoardContainer,Total POS Sales:
+General,POS Transaction Viewer,POS Transaction Viewer,,y,,,,,div-span,posTransactionContainer,POS Transactions
+General,Process Status,Process Status Configuration,,,,,,,div-span,summaryEditorContainer,Process Status
+General,System Monitoring Dashboard,System Monitoring Dashboard,dashboard,y,y,9.3.0,y,,div-div,systemMonitoringTabs,Overall System Check Failures
+General,Unimported Transactions,Retry Unimported Transaction Editor,,y,,,,,div-div,summaryEditorContainer,Transaction Details
+General,Communication Log Viewer,Communication Log Viewer,,y,y,9.5.0,,,div-span,summaryEditorContainer,Results
+Actions,Assign Profiles,Assign Profiles,action,,,,,,div-h3,assignProfilesAction,Select Accounts
+Actions,Import Accounts,Import Accounts,action,y,,,,,div-h3,importAccountsAction,Select Account Import Interface
+Actions,Import Data,Import Data,action,y,,,,,div-h3,importDataAction,Stage or Import
+Actions,Import Deductions Taken,Import Deductions Taken,action,y,,,,,div-h3,importDeductionsAction,Select Account Group
+Actions,Manage Gift Cards,Gift Card Maintenance,action,y,,,,,div-h3,giftCardsAction,Gift Card Selection
+Actions,POS Communications,Communications,action,y,,,,,div-h3,communicationAction,Terminal Action
+Actions,Process Transaction Cycle,Process Transaction Cycle,action,y,,,,,div-h3,processPayCycleAction,Select Account Groups
+Actions,Recreate Payroll File,Recreate Payroll File,action,y,,,,,div-h3,recreatePayrollAction,Select Account Group
+Actions,Reverse Transaction Cycle,Reverse Transaction Cycle,action,y,,,,,div-h3,undoProcessPayCycleAction,Select Transaction Cycle
+Actions,Run Reports,Run Report,action,y,,,,,div-h3,reportsAction,Choose Report Category
+Actions,Update Terminal Configuration,Terminal Update,action,y,,,,,div-h3,updateTerminalAction,Terminal Selection Method
+Actions,Send Communication,Send Communication,action,y,,9.5.0,,,div-h3,sendCommunicationActionContainer,Message Source
+Actions,Generate Voucher Codes,Generate Voucher Codes,action,y,,9.5.1,,,div-h3,voucherCodesAction,Select Voucher
+QC SETUP,Account Groups,Account Group Configuration,,y,,,,y,div-div,summaryEditorContainer,General
+QC SETUP,Background Tasks,Background Tasks Configuration,,y,,9.2.0,,,div-div,summaryEditorContainer,General
+QC SETUP,Communication Groups,Communication Group Editor,,y,,,,y,div-span,summaryEditorContainer,Communication Groups
+QC SETUP,Deduction Codes,Deduction Code Configuration,,y,,,,y,div-div,summaryEditorContainer,General
+QC SETUP,Deduction Profiles,Deduction Profile Configuration,,y,,,,y,div-span,summaryEditorContainer,Deduction Profiles
+QC SETUP,Deletion Thresholds,Deletion Thresholds Editor,,y,,,,,div-div,summaryEditorContainer,General
+QC SETUP,Disclaimers,Disclaimer Editor,,y,,,,y,div-span,summaryEditorContainer,Disclaimers
+QC SETUP,Discount & Meal Plan Profiles,Discount & Meal Plan Profile Configuration,,y,,,,y,div-span,summaryEditorContainer,Discount & Meal Plan Profiles
+QC SETUP,Discounts & Meal Plans,Discount & Meal Plan Configuration,,y,,,,y,div-span,summaryEditorContainer,Discounts & Meal Plans
+QC SETUP,Displays,Display Configuration,,y,,9.2.0,,y,div-span,summaryEditorContainer,Displays
+QC SETUP,FAQ Sets,FAQ Set Editor,,y,,,,y,div-span,summaryEditorContainer,FAQ Sets
+QC SETUP,FAQs,FAQ Editor,,y,,,,y,div-span,summaryEditorContainer,FAQs
+QC SETUP,Funding Amounts,Funding Amount Editor,,y,,,,y,div-span,summaryEditorContainer,Funding Amount
+QC SETUP,Global Settings,Global Options Configuration,,,,,,,div-div,summaryEditorContainer,Authentication
+QC SETUP,Hyperfind Filters,Hyperfind Filter Configuration,,y,,,,y,div-div,summaryEditorContainer,General
+QC SETUP,Interfaces,Interface Configuration,,y,,,,y,div-div,summaryEditorContainer,General
+QC SETUP,Item Profiles,QC Item Profile Configuration,,y,,,,y,div-div,summaryEditorContainer,General
+QC SETUP,Items,QC Item Editor,,y,,,,y,div-div,summaryEditorContainer,General
+QC SETUP,Labor Levels,Labor Level Configuration,,y,,,,y,div-div,summaryEditorContainer,Labor Level Entry
+QC SETUP,Locations,Location Editor,,y,,,,y,div-div,summaryEditorContainer,General
+QC SETUP,OTMs,OTM Configuration,,y,,,,y,div-div,summaryEditorContainer,General
+QC SETUP,Ownership Groups,Ownership Group Configuration,,y,,,,y,div-div,summaryEditorContainer,General
+QC SETUP,Printer Hosts,Printer Host Configuration,,y,,,,y,div-span,summaryEditorContainer,Printer Host
+QC SETUP,Printers,Printer Configuration,,y,,,,y,div-div,summaryEditorContainer,General
+QC SETUP,Purchase Limits,Purchase Limit Configuration,,y,,,,y,div-div,summaryEditorContainer,General
+QC SETUP,Purchase Restriction Profiles,Purchase Restriction Profile Configuration,,y,,,,y,div-span,summaryEditorContainer,Purchase Restriction Profiles
+QC SETUP,QC Lite Profiles,QC Lite Profile Editor,,y,,,,y,div-span,summaryEditorContainer,QC Lite Profiles
+QC SETUP,Revenue Centers,Revenue Center Configuration,,y,,,,y,div-div,summaryEditorContainer,General
+QC SETUP,Schedules,Schedule Editor,,y,,,,y,div-div,summaryEditorContainer,General
+QC SETUP,Services,QC Service Management,,y,,,,,div-span,summaryEditorContainer,Services
+QC SETUP,Sign Groups,Sign Group Configuration,,y,,9.2.0,,y,div-div,summaryEditorContainer,General
+QC SETUP,Signs,Sign Configuration,,y,,9.2.0,,y,div-div,summaryEditorContainer,General
+QC SETUP,Spending Profiles,Spending Profile Configuration,,y,,,,y,div-div,summaryEditorContainer,General
+QC SETUP,Sync Service,Sync Service Editor,,y,,,,y,div-div,summaryEditorContainer,General
+QC SETUP,System Monitor Checks,System Monitoring Check Editor,superitem,y,Y,9.3.0,y,,div-span,summaryEditorContainer,System Monitoring Checks
+QC SETUP,System Text,System Text Editor,,y,,,,y,div-span,summaryEditorContainer,System Text
+QC SETUP,Templates,Template Configuration,,y,,,,y,div-div,summaryEditorContainer,General
+QC SETUP,Terminals,Terminal Configuration,,y,,,,y,div-div,summaryEditorContainer,General
+QC SETUP,Terms of Service,Terms of Service Editor,,y,,,,y,div-div,summaryEditorContainer,General
+QC SETUP,User Access Profiles,Access Profile Configuration,,y,,,,y,div-div,summaryEditorContainer,General
+QC SETUP,User Accounts,User Account Configuration,,y,,,,y,div-div,summaryEditorContainer,General
+QC SETUP,Third Party API,Third Party API Configuration,,y,,9.5.0,,y,div-span,summaryEditorContainer,Third Party APIs
+QC SETUP,Access Codes,Access Code Editor,,,,9.5.0,,y,div-span,summaryEditorContainer,Access Codes
+POS SETUP,Combos,Combo Editor,,,,9.3.0,,y,div-span,summaryEditorContainer,Combos
+POS SETUP,Departments,Department Configuration,,y,,,,y,div-div,summaryEditorContainer,General
+POS SETUP,Discounts (POS),POS Discount Configuration,,y,,,,y,div-div,summaryEditorContainer,General
+POS SETUP,Inventory,Inventory Editor,,y,,,,y,div-span,summaryEditorContainer,Inventory Batches
+POS SETUP,Keypads,Keypad Editor,,y,,,,y,div-span,summaryEditorContainer,Keypads
+POS SETUP,Loyalty Accrual Policies,Loyalty Accrual Policy Editor,,y,,9.2.0,,y,div-div,summaryEditorContainer,General
+POS SETUP,Loyalty Programs,Loyalty Program Editor,,y,,,,y,div-div,summaryEditorContainer,General
+POS SETUP,Loyalty Rewards,Loyalty Reward Editor,,y,,,,y,div-div,summaryEditorContainer,General
+POS SETUP,Macros,Macro Configuration,,y,,,,y,div-div,summaryEditorContainer,General
+POS SETUP,Modifier Sets,Modifier Sets Editor,,y,,,,y,div-div,summaryEditorContainer,General
+POS SETUP,Nutrition Categories,Nutrition Editor,,y,,,,,div-div,summaryEditorContainer,Nutrition Categories
+POS SETUP,Paid Out,Paid Out Configuration,,y,,,,y,div-div,summaryEditorContainer,General
+POS SETUP,POS Applications,POS Application Editor,,y,,9.2.0,,y,div-div,summaryEditorContainer,General
+POS SETUP,POS Deployment Packages,Deployment Package Editor,,y,,9.2.0,,y,div-div,summaryEditorContainer,General
+POS SETUP,Prep Option Sets,Prep Option Sets Editor,,y,,9.3.0,,y,div-span,summaryEditorContainer,Prep Option Sets
+POS SETUP,Prep Options,Prep Option Editor,,y,,9.3.0,,y,div-span,summaryEditorContainer,Prep Options
+POS SETUP,Price Levels,Price Level Configuration,,y,,,,y,div-div,summaryEditorContainer,General
+POS SETUP,Product Editor,Product Editor,,y,,,,y,div-div,summaryEditorContainer,General
+POS SETUP,Purchase Orders,Purchase Order Editor,,y,,,,y,div-span,summaryEditorContainer,Purchase Orders
+POS SETUP,Received On Accounts,Received On Account Configuration,,y,,,,y,div-div,summaryEditorContainer,General
+POS SETUP,Rotations,Rotation Configuration,,y,,,,y,div-div,summaryEditorContainer,General
+POS SETUP,Subdepartments,Subdepartment Configuration,,y,,,,y,div-div,summaryEditorContainer,General
+POS SETUP,Surcharges,Surcharge Configuration,,y,,,,y,div-div,summaryEditorContainer,General
+POS SETUP,Tare Profiles,Tare Profiles Editor,,y,,9.3.0,,y,div-span,summaryEditorContainer,Tare Profiles
+POS SETUP,Tares,Tare Configuration,,y,,,,y,div-div,summaryEditorContainer,General
+POS SETUP,Tax Rates,Tax Rate Configuration,,y,,,,y,div-div,summaryEditorContainer,General
+POS SETUP,Tenders,Tender Configuration,,y,,,,y,div-div,summaryEditorContainer,General
+POS SETUP,Upsell Profiles,Upsell Profile Editor,,y,,9.3.0,,y,div-span,summaryEditorContainer,Upsell Profiles
+POS SETUP,Vendors,Vendor Editor,,y,,,,y,div-div,summaryEditorContainer,General
+POS SETUP,Donations,Donation Editor,,y,,,,y,div-span,summaryEditorContainer,Donations
+POS SETUP,Integrated Gift Cards,Integrated Gift Card Setup,,y,,9.4.0,,y,div-span,summaryEditorContainer,Gift Card
+POS SETUP,GL Billing Accounts,General Ledger Billing Account Editor,,y,,9.5.1,,y,div-div,summaryEditorContainer,General
+POS SETUP,Vouchers,Voucher Configuration,,y,,9.5.1,,y,div-span,summaryEditorContainer,Vouchers
+POS SETUP,Delivery Locations,Delivery Location Editor,,y,,9.5.2,,y,div-span,summaryEditorContainer,Delivery Locations
+POS SETUP,Delivery Location Sets,Delivery Location Sets Editor,,y,,9.5.2,,y,div-span,summaryEditorContainer,Delivery Location Sets
+OMS SETUP,Event Log Viewer,OMS Event Log Viewer,,,,9.5.0,,,div-span,summaryEditorContainer,Stations
+OMS SETUP,OMS Stations,OMS Station Configuration,,y,,9.5.0,,y,div-span,summaryEditorContainer,Stations
+OMS SETUP,Order Status Profiles,OMS Order Status Profile Configuration,,y,,9.5.0,,y,div-span,summaryEditorContainer,Order Status Profiles
+OMS SETUP,Order Timer Profiles,Order Timer Profile Configuration,,y,,9.5.0,,y,div-span,summaryEditorContainer,Order Timer Profiles
+OMS SETUP,Style Profiles,Style Profiles Configuration,,y,,9.5.0,,y,div-span,summaryEditorContainer,Style Profiles
