@@ -18,7 +18,7 @@ import java.time.Duration;
 import java.util.Date;
 import java.util.List;
 
-public class TestRoot {
+public abstract class RootTest {
     public static final String ENV_BROWSER_DRIVER = "BROWSER_DRIVER";
     public static final String DRIVER_PATH = "\\bin\\webdrivers";
     public static final String DRIVER_CHROME = "chromedriver.exe";
@@ -403,26 +403,26 @@ public class TestRoot {
         }
     }
 
-    public TestRoot() {
+    public RootTest() {
         this(DRIVER_DEFAULT);
     }
 
-    public TestRoot(TestRoot activeTest) {
+    public RootTest(RootTest activeTest) {
         webDriver = activeTest.webDriver;
         webDriverName = activeTest.webDriverName;
         webDriverOptions = activeTest.webDriverOptions;
         logger = activeTest.logger;
     }
 
-    public TestRoot(WebDriver driver) {
+    public RootTest(WebDriver driver) {
         webDriver = driver;
     }
 
-    public TestRoot(String driver) {
+    public RootTest(String driver) {
         this(driver, null);
     }
 
-    public TestRoot(String driver, Capabilities theOptions) {
+    public RootTest(String driver, Capabilities theOptions) {
         setBrowserDriver(driver);
         setBrowserDriverOptions(theOptions);
 
