@@ -1,7 +1,13 @@
 package com.mmh.qa.auto;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.log4j.*;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.appender.ConsoleAppender;
+import org.apache.logging.log4j.core.config.Configurator;
+import org.apache.logging.log4j.core.config.builder.api.*;
+import org.apache.logging.log4j.core.config.builder.impl.BuiltConfiguration;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -356,6 +362,39 @@ public abstract class RootTest {
     }
 
     /**
+     * Initial setup of logging
+     * Log file location: [user.dir]\target\logs
+     * Log file name: [name of class].log
+     * TODO: allow options for logging
+     */
+    private void setupLogging() {
+        // create a new configuration
+        ConfigurationBuilder<BuiltConfiguration> builder = ConfigurationBuilderFactory.newConfigurationBuilder();
+        //builder.setStatusLevel(Level.INFO);
+        builder.setConfigurationName("config1");
+        String layoutPattern = "%d{HH:mm:ss} %-5p %c{1}:%L %m%n";  // log entry line format
+        LayoutComponentBuilder layoutBuilder = builder.newLayout("PatternLayout")
+                .addAttribute("pattern", layoutPattern); //"%d [%t] %-5level: %msg%n%throwable");
+        // create a console appender
+        AppenderComponentBuilder appenderBuilderCons = builder.newAppender("outconsole", "CONSOLE")
+                .addAttribute("target", ConsoleAppender.Target.SYSTEM_OUT);
+        appenderBuilderCons.add(layoutBuilder);
+        builder.add(appenderBuilderCons);
+        // create a file appender
+        AppenderComponentBuilder appenderBuilderFile = builder.newAppender("outfile", "File")
+                .addAttribute("fileName", System.getProperty("user.dir")+LOG_PATH+"\\log_"+getClass().getSimpleName()+".log");
+        appenderBuilderFile.add(layoutBuilder);
+        builder.add(appenderBuilderFile);
+        // create logger
+        builder.add(builder.newRootLogger(Level.INFO)
+                .add(builder.newAppenderRef("outconsole"))
+                .add(builder.newAppenderRef("outfile")));
+        Configurator.initialize(builder.build());
+        logger = LogManager.getLogger(getClass());
+        logger.info(String.format("\n\n%s\nOpening log file for:%s (%s)", logHeaderSeparator, getClass(), new Date()));
+    }
+
+    /**
      * Wrapper around waitFor()
      * @param xPath element to wait for
      * @return true if element was found
@@ -425,23 +464,6 @@ public abstract class RootTest {
     public RootTest(String driver, Capabilities theOptions) {
         setBrowserDriver(driver);
         setBrowserDriverOptions(theOptions);
-
-        // setup logging (Log4j)
-        try {
-            PropertyConfigurator.configure(getClass().getClassLoader().getResource(LOG4J_PROPERTIES_FILE));
-            logger = LogManager.getLogger(getClass());
-            // add file-type appender
-            // file appender created here (instead of from properties) so that the file can be named after the calling class
-            String logFilePattern = "%d{HH:mm:ss} %-5p %c{1}:%L %m%n";  // line format of log entries
-            String logFileFullPath = System.getProperty("user.dir")+LOG_PATH+"\\log_"+getClass().getSimpleName()+".log";
-            FileAppender fileApp = new FileAppender(new PatternLayout(logFilePattern), logFileFullPath);
-            logger.addAppender(fileApp);
-            //TODO dont allow duplicate log names (from multiple instantiations of a class)
-            //TODO add option of creating an additional log file(s)
-            logger.info(String.format("\n\n%s\nOpening log file for:%s (%s)", logHeaderSeparator, getClass(), new Date()));
-        } catch (Exception e) {
-            logFatal("Cannot instantiate file logger for class " + getClass().getSimpleName() + ":" + e.getMessage());
-        }
+        setupLogging();
     }
-
 }
